@@ -30,7 +30,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_native_splash: ^2.2.4
-
+  flutter_localizations: # Add this line
+    sdk: flutter 
 flutter_native_splash:
 
   # This package generates native code to customize Flutter's default white native splash screen
