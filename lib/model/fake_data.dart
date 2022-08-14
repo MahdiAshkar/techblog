@@ -9,6 +9,8 @@ Map homepagePosterMap = {
   'title': 'دوازده قدم برنامه نویسی یک دوره ی',
 };
 
+Set<String> selectedTag = {};
+
 // fake data tag
 List<HashTag> tagList = [
   HashTag(title: 'جاوا'),
@@ -17,7 +19,7 @@ List<HashTag> tagList = [
   HashTag(title: 'دارت و فلاتر'),
   HashTag(title: 'کاتلین'),
   HashTag(title: 'IOT'),
-  HashTag(title: 'هوش مصنوعی'),
+  HashTag(title: 'پایتون'),
 ];
 
 // fake data Blog

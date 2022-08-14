@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tecblog/components/my_divider.dart';
+import 'package:tecblog/components/my_text_button.dart';
 import 'package:tecblog/gen/assets.gen.dart';
 import 'package:tecblog/my_colors.dart';
+import 'package:tecblog/my_string.dart';
 import 'package:tecblog/view/profile_screen.dart';
 import 'home_screen.dart';
 
@@ -10,6 +13,8 @@ class MainScreen extends StatefulWidget {
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
+
+final GlobalKey<ScaffoldState> _key = GlobalKey();
 
 class _MainScreenState extends State<MainScreen> {
   var selectedPageIndex = 0;
@@ -21,13 +26,78 @@ class _MainScreenState extends State<MainScreen> {
 
     return SafeArea(
       child: Scaffold(
+          key: _key,
+          drawer: Drawer(
+              backgroundColor: SolidColors.scaffoldBg,
+              child: Padding(
+                padding: EdgeInsets.only(left: bodyMargin, right: bodyMargin),
+                child: ListView(
+                  children: [
+                    DrawerHeader(
+                        child: Image.asset(
+                      Assets.images.logo.path,
+                      scale: 3,
+                    )),
+                    TechDivider(
+                      size: size,
+                      padding: false,
+                    ),
+                    ListTile(
+                      title: Text(
+                        MyStrings.profileUser,
+                        style: textTheme.headline4,
+                      ),
+                      onTap: () {},
+                    ),
+                    TechDivider(
+                      size: size,
+                      padding: false,
+                    ),
+                    ListTile(
+                      title: Text(
+                        MyStrings.aboutTechBlog,
+                        style: textTheme.headline4,
+                      ),
+                      onTap: () {},
+                    ),
+                    TechDivider(
+                      size: size,
+                      padding: false,
+                    ),
+                    ListTile(
+                      title: Text(
+                        MyStrings.shareTechBlog,
+                        style: textTheme.headline4,
+                      ),
+                      onTap: () {},
+                    ),
+                    TechDivider(
+                      size: size,
+                      padding: false,
+                    ),
+                    ListTile(
+                      title: Text(
+                        MyStrings.gitHubTechBlog,
+                        style: textTheme.headline4,
+                      ),
+                      onTap: () {},
+                    ),
+                  ],
+                ),
+              )),
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                const Icon(
-                  Icons.menu,
-                  color: Colors.black,
+                InkWell(
+                  onTap: () {
+                    _key.currentState!.openDrawer();
+                  },
+                  child: const Icon(
+                    Icons.menu,
+                    color: Colors.black,
+                  ),
                 ),
                 Image.asset(
                   Assets.images.logo.path,
@@ -41,26 +111,24 @@ class _MainScreenState extends State<MainScreen> {
             ),
             backgroundColor: SolidColors.scaffoldBg,
             elevation: 0,
-            scrolledUnderElevation: 24,
+            scrolledUnderElevation: selectedPageIndex == 0 ? 25 : 0,
           ),
           backgroundColor: SolidColors.scaffoldBg,
           body: Stack(
             children: [
-              Center(
-                child: Positioned.fill(
-                  child: IndexedStack(
-                    index: selectedPageIndex,
-                    children: [
-                      HomeScreen(
-                          size: size,
-                          textTheme: textTheme,
-                          bodyMargin: bodyMargin),
-                      ProfileScreen(
-                          size: size,
-                          textTheme: textTheme,
-                          bodyMargin: bodyMargin),
-                    ],
-                  ),
+              Positioned.fill(
+                child: IndexedStack(
+                  index: selectedPageIndex,
+                  children: [
+                    HomeScreen(
+                        size: size,
+                        textTheme: textTheme,
+                        bodyMargin: bodyMargin),
+                    ProfileScreen(
+                        size: size,
+                        textTheme: textTheme,
+                        bodyMargin: bodyMargin),
+                  ],
                 ),
               ),
               BackgroundBottomNav(size: size),
@@ -94,7 +162,7 @@ class BottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: 16,
+      bottom: 8,
       right: bodyMargin,
       left: bodyMargin,
       child: Container(

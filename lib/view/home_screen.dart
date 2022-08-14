@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tecblog/components/title_icon.dart';
 import 'package:tecblog/model/fake_data.dart';
+import '../components/my_tag.dart';
 import '../gen/assets.gen.dart';
 import '../my_colors.dart';
 import '../my_string.dart';
@@ -240,32 +241,9 @@ class TagList extends StatelessWidget {
             return Padding(
               padding:
                   EdgeInsets.fromLTRB(8, 0, index == 0 ? bodyMargin : 8, 0),
-              child: Container(
-                // height: size.height / 22.83,
-                decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: GradiantColors.tags,
-                        begin: Alignment.centerRight,
-                        end: Alignment.centerLeft),
-                    color: Colors.black,
-                    borderRadius: BorderRadius.all(Radius.circular(24))),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(24, 0, 16, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      const Icon(Icons.tag_sharp,
-                          size: 16, color: Colors.white),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      Text(
-                        tagList[index].title,
-                        style: textTheme.headline2,
-                      ),
-                    ],
-                  ),
-                ),
+              child: TagContainer(
+                textTheme: textTheme,
+                index: index,
               ),
             );
           }),

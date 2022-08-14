@@ -14,6 +14,10 @@ import 'package:flutter/services.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/downArrows.png
+  AssetGenImage get downArrows =>
+      const AssetGenImage('assets/icons/downArrows.png');
+
   /// File path: assets/icons/home.png
   AssetGenImage get home => const AssetGenImage('assets/icons/home.png');
 
