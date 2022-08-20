@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import '../components/my_divider.dart';
-import '../components/my_text_button.dart';
-import '../components/title_icon.dart';
 import '../gen/assets.gen.dart';
-import '../my_string.dart';
+import '../components/my_string.dart';
+import '../components/my_component.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({

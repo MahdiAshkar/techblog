@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tecblog/components/my_tag.dart';
 import 'package:tecblog/gen/assets.gen.dart';
 import 'package:tecblog/model/fake_data.dart';
-import 'package:tecblog/my_colors.dart';
-import 'package:tecblog/my_string.dart';
+import '../components/my_colors.dart';
+import '../components/my_string.dart';
+import '../components/my_component.dart';
 
 class MyCatsScreen extends StatefulWidget {
   const MyCatsScreen({Key? key}) : super(key: key);

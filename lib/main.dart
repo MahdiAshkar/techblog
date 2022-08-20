@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:tecblog/my_colors.dart';
 import 'package:tecblog/view/main_screen.dart';
 import 'package:tecblog/view/register_intro.dart';
 import 'package:tecblog/view/splash_screen.dart';
+import '../components/my_colors.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(

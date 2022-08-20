@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tecblog/components/my_divider.dart';
-import 'package:tecblog/components/my_text_button.dart';
 import 'package:tecblog/gen/assets.gen.dart';
-import 'package:tecblog/my_colors.dart';
-import 'package:tecblog/my_string.dart';
 import 'package:tecblog/view/profile_screen.dart';
 import 'home_screen.dart';
+import '../components/my_colors.dart';
+import '../components/my_string.dart';
+import '../components/my_component.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
