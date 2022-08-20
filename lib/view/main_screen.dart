@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:tecblog/gen/assets.gen.dart';
 import 'package:tecblog/view/profile_screen.dart';
 import 'home_screen.dart';
@@ -6,17 +8,10 @@ import '../components/my_colors.dart';
 import '../components/my_string.dart';
 import '../components/my_component.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
-
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
-class _MainScreenState extends State<MainScreen> {
-  var selectedPageIndex = 0;
+class MainScreen extends StatelessWidget {
+  RxInt selectedPageIndex = 0.obs;
   @override
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
@@ -68,7 +63,9 @@ class _MainScreenState extends State<MainScreen> {
                         MyStrings.shareTechBlog,
                         style: textTheme.headline4,
                       ),
-                      onTap: () {},
+                      onTap: () async {
+                        await Share.share(MyStrings.shareText);
+                      },
                     ),
                     TechDivider(
                       size: size,
@@ -79,7 +76,9 @@ class _MainScreenState extends State<MainScreen> {
                         MyStrings.gitHubTechBlog,
                         style: textTheme.headline4,
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        myLaunchUrl(MyStrings.shareUrlTechblogGithub);
+                      },
                     ),
                   ],
                 ),
@@ -116,28 +115,26 @@ class _MainScreenState extends State<MainScreen> {
           body: Stack(
             children: [
               Positioned.fill(
-                child: IndexedStack(
-                  index: selectedPageIndex,
-                  children: [
-                    HomeScreen(
-                        size: size,
-                        textTheme: textTheme,
-                        bodyMargin: bodyMargin),
-                    ProfileScreen(
-                        size: size,
-                        textTheme: textTheme,
-                        bodyMargin: bodyMargin),
-                  ],
-                ),
+                child: Obx(() => IndexedStack(
+                      index: selectedPageIndex.value,
+                      children: [
+                        HomeScreen(
+                            size: size,
+                            textTheme: textTheme,
+                            bodyMargin: bodyMargin),
+                        ProfileScreen(
+                            size: size,
+                            textTheme: textTheme,
+                            bodyMargin: bodyMargin),
+                      ],
+                    )),
               ),
               BackgroundBottomNav(size: size),
               BottomNav(
                 bodyMargin: bodyMargin,
                 size: size,
                 changScreen: (int value) {
-                  setState(() {
-                    selectedPageIndex = value;
-                  });
+                  selectedPageIndex.value = value;
                 },
               )
             ],

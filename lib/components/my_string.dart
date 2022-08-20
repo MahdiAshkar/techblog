@@ -16,10 +16,16 @@ class MyStrings {
   static const String chooseCats = 'دسته بندی هایی که دوست داری رو انتخاب کن';
   static const String activateCode = 'کد فعال سازی رو وارد کن ';
   static const String hintTextEmail = 'techblog@gmail.com';
+  static const String shareUrlTechblogGithub =
+      'https://github.com/MahdiAshkar/techblog';
   static const String welcomeSignUp = '''به تک‌بلاگ خوش اومدی
 
 برای ارسال مطلب و پادکست باید حتما 
 ثبت نام کنی ''';
+  static const String shareText = '''
+\nمن از تک بلاگ استفاده کردم به شما هم پیشنهاد می کنم خیلی جالبه ! 
+https://cafebazaar.ir
+''';
   static const String successfullRegister =
       '''تبریک میگم ، ایمیل با موفقیت تایید شد
 لطفا اطلاعات ثبت نام رو کامل کن''';

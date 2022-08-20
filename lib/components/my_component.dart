@@ -1,5 +1,7 @@
+import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../model/fake_data.dart';
 import 'my_colors.dart';
 
@@ -153,5 +155,14 @@ class MyTitleIconRow extends StatelessWidget {
         )
       ],
     );
+  }
+}
+
+myLaunchUrl(String url) async {
+  Uri uri = Uri.parse(url);
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri);
+  } else {
+    log('could not launch $url');
   }
 }
