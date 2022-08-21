@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../model/fake_data.dart';
 import 'my_colors.dart';
@@ -156,6 +157,13 @@ class MyTitleIconRow extends StatelessWidget {
       ],
     );
   }
+}
+
+Widget loading() {
+  return const SpinKitFadingCube(
+    size: 32.0,
+    color: SolidColors.primaryColor,
+  );
 }
 
 myLaunchUrl(String url) async {
