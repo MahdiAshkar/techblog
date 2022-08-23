@@ -49,6 +49,10 @@ class $AssetsImagesGen {
   AssetGenImage get profileAvatar =>
       const AssetGenImage('assets/images/profileAvatar.png');
 
+  /// File path: assets/images/single_place_holder.jpg
+  AssetGenImage get singlePlaceHolder =>
+      const AssetGenImage('assets/images/single_place_holder.jpg');
+
   /// File path: assets/images/techBot.svg
   SvgGenImage get techBot => const SvgGenImage('assets/images/techBot.svg');
 }

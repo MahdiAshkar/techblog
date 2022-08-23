@@ -29,6 +29,9 @@ class HomeScreenController extends GetxController {
       for (var element in response.data['top_podcasts']) {
         topPodcastList.add(PodcastModel.fromJson(element));
       }
+      for (var element in response.data['tags']) {
+        tagsList.add(TagModel.fromJson(element));
+      }
       poster.value = PosterModel.fromJson(response.data['poster']);
       isLoading.value = false;
     }

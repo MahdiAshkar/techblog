@@ -19,6 +19,7 @@ class SolidColors {
   static const Color divider = Color.fromARGB(255, 112, 112, 112);
   static const Color bottomSheet = Color.fromARGB(255, 255, 255, 255);
   static const Color hintText = Color.fromARGB(255, 219, 219, 219);
+  static const Color subtitleArticle = Color.fromARGB(255, 91, 91, 91);
 }
 
 class GradiantColors {
@@ -41,6 +42,10 @@ class GradiantColors {
   ];
   static const List<Color> blogPoster = [
     Color.fromARGB(255, 0, 0, 0),
+    Color.fromARGB(0, 0, 0, 0),
+  ];
+  static const List<Color> appBarSingleScreen = [
+    Color.fromARGB(255, 46, 3, 71),
     Color.fromARGB(0, 0, 0, 0),
   ];
 }

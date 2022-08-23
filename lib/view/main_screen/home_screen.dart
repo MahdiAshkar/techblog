@@ -1,15 +1,13 @@
 import 'dart:developer';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:tecblog/controller/home_screen_controller.dart';
 import 'package:tecblog/model/fake_data.dart';
-import '../components/my_colors.dart';
-import '../components/my_string.dart';
-import '../components/my_component.dart';
-import '../gen/assets.gen.dart';
+import '../../components/my_colors.dart';
+import '../../components/my_string.dart';
+import '../../components/my_component.dart';
+import '../../gen/assets.gen.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({
@@ -43,12 +41,7 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(
                       height: 24,
                     ),
-
-                    TagList(
-                        size: size,
-                        bodyMargin: bodyMargin,
-                        textTheme: textTheme),
-
+                    tags(),
                     // Text SeeMore
                     Padding(
                       padding: EdgeInsets.only(right: bodyMargin, top: 32),
@@ -111,34 +104,35 @@ class HomeScreen extends StatelessWidget {
         Positioned(
           left: 0,
           bottom: 8,
-          right: 0,
+          right: 15,
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    homepagePosterMap['writer'] +
-                        ' - ' +
-                        homepagePosterMap['date'],
-                    style: textTheme.subtitle1,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        homepagePosterMap['view'],
-                        style: textTheme.subtitle1,
-                      ),
-                      const SizedBox(width: 8),
-                      const Icon(
-                        Icons.remove_red_eye_sharp,
-                        color: Colors.white,
-                        size: 18,
-                      )
-                    ],
-                  )
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //   children: [
+              //     Text(
+              //       homepagePosterMap['writer'] +
+              //           ' - ' +
+              //           homepagePosterMap['date'],
+              //       style: textTheme.subtitle1,
+              //     ),
+              //     Row(
+              //       children: [
+              //         Text(
+              //           homepagePosterMap['view'],
+              //           style: textTheme.subtitle1,
+              //         ),
+              //         const SizedBox(width: 8),
+              //         const Icon(
+              //           Icons.remove_red_eye_sharp,
+              //           color: Colors.white,
+              //           size: 18,
+              //         )
+              //       ],
+              //     )
+              //   ],
+              // ),
+
               Text(
                 homeScreenController.poster.value.title!,
                 style: textTheme.headline1,
@@ -306,27 +300,13 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-}
 
-class TagList extends StatelessWidget {
-  const TagList({
-    Key? key,
-    required this.size,
-    required this.bodyMargin,
-    required this.textTheme,
-  }) : super(key: key);
-
-  final Size size;
-  final double bodyMargin;
-  final TextTheme textTheme;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget tags() {
     return SizedBox(
       height: size.height / 21.0,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: tagList.length,
+          itemCount: homeScreenController.tagsList.length,
           itemBuilder: (context, index) {
             return Padding(
               padding:

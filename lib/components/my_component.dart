@@ -2,6 +2,8 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
+import 'package:tecblog/controller/home_screen_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../model/fake_data.dart';
 import 'my_colors.dart';
@@ -110,7 +112,7 @@ class TagContainer extends StatelessWidget {
                     width: 8,
                   ),
                   Text(
-                    tagList[index].title,
+                    Get.find<HomeScreenController>().tagsList[index].title!,
                     style: textTheme.headline2,
                   ),
                 ],
@@ -157,6 +159,41 @@ class MyTitleIconRow extends StatelessWidget {
       ],
     );
   }
+}
+
+PreferredSize appBar(String title, TextTheme textTheme) {
+  return PreferredSize(
+    preferredSize: const Size.fromHeight(80),
+    child: Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Center(
+              child: Text(
+                title,
+                style: textTheme.headline6,
+              ),
+            ),
+          )
+        ],
+        leading: Container(
+          height: 45,
+          width: 45,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: SolidColors.primaryColor.withAlpha(200),
+          ),
+          child: const Icon(
+            Icons.arrow_back_ios_outlined,
+          ),
+        ),
+      ),
+    ),
+  );
 }
 
 Widget loading() {
